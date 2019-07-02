@@ -32,7 +32,7 @@
             this.viewHtml();
             this.clickBtn();
         },
-        creatHtml(i){
+        creatHtml:function(i){
             if(i==this.settings.page){
                 pageList.push('<span class="active" data-page='+i+'>'+i+'</span>');
             }else{
