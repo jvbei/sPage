@@ -11,7 +11,7 @@ jquery分页插件
 
 4，使用说明
 <pre><code>
-<script type="text/javascript"><br/>
+<script type="text/javascript">
     $(function(){
         $("#myPage").sPage({
             page:1,//当前页码
@@ -25,9 +25,9 @@ jquery分页插件
             callbackFun:function(page){
             	 //点击分页按钮回调函数，返回当前页码
                 $("#pageNum").text(page);
-            }<br/>
-        });<br/>
-    });<br/>
+            }
+        });
+    });
 </script>
 </code></pre>
 
