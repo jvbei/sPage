@@ -8,4 +8,5 @@
 .spage-skip{display: inline-block;margin-left: 20px;line-height: 35px;color: #666;font-size:14px;}
 .spage-skip input{box-sizing: border-box;display: inline-block;width: 45px;height: 35px;line-height: 35px;text-align: center;vertical-align: top;border:1px solid #ddd;outline: none;}
 .spage-skip input:focus{border-color: #2d98e6;}
-.spage-skip span{display: inline-block;padding: 0px 14px;line-height: 35px;vertical-align: top;border:none;color: #fff;background: #2d98e6;outline: none;cursor: pointer;}
+.spage-skip span{display: inline-block;padding: 0px 14px;line-height: 33px;vertical-align: top;color: #666;outline: none;border:1px solid #ddd;cursor: pointer;}
+.spage-skip span:hover{background: #2d98e6;color: #fff;border:1px solid #2d98e6;}

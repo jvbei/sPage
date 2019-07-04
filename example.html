@@ -6,35 +6,89 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <link rel="stylesheet" type="text/css" href="./jquery.sPage.css">
     <style type="text/css">
-    	.dome{
-    		padding: 30px;
+    	.num{
+            height: 50px;
+    		line-height: 50px;
     		text-align: center;
     	}
-    	
+    	.demo{
+            margin-bottom: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-	<div id="pageNum" class="dome">1</div>
-	<div id="myPage" class="dome"></div>
-    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-    <script src="./jquery.sPage.js"></script>
+	<div id="pNum" class="num"></div>
+	<div id="myPage" class="demo"></div>
+    <div id="pNum1" class="num"></div>
+    <div id="myPage1" class="demo"></div>
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script> -->
+    <script src="./jquery.sPage.min.js"></script>
     <script type="text/javascript">
         $(function(){
+            // 示例1
             $("#myPage").sPage({
                 page:1,//当前页码
 	            pageSize:10,//每页显示多少条数据，默认10条
-	            listTotal:150,//数据总条数
+	            total:150,//数据总条数
 	            showTotal:true,//是否显示总条数，默认关闭：false
+                totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符
 	            showSkip:true,//是否显示跳页，默认关闭：false
 	            showPN:true,//是否显示上下翻页，默认开启：true
 	            prevPage:"上一页",//上翻页文字描述，默认“上一页”
 	            nextPage:"下一页",//下翻页文字描述，默认“下一页”
                 callbackFun:function(page){
                 	//点击分页按钮回调函数，返回当前页码
-                    $("#pageNum").text(page);
+                    $("#pNum").text(page);
                 }
             });
+            // 示例2
+            $("#myPage1").sPage({
+                page:1,//当前页码
+                pageSize:10,//每页显示多少条数据，默认10条
+                total:150,//数据总条数
+                callbackFun:function(page){
+                    //点击分页按钮回调函数，返回当前页码
+                    $("#pNum1").text(page);
+                }
+            });
+            // 后台数据请求示例
+            // ajaxPage(1);
         });
+        //结合Ajax使用，仅供参考
+        function ajaxPage(page){
+            var p = page || 1;
+            $.ajax({
+                type: "POST",
+                url: "www.test.com/test",
+                data: {
+                    page:p,
+                    pageSize:10,
+                    name:"小明",
+                    age:16
+                },
+                dataType: "json",  
+                success: function(data){
+                    //数据处理
+                    // ...
+
+                    // 调用分页插件
+                    $("#myPage1").sPage({
+                        page:p,//当前页码
+                        pageSize:10,//每页显示多少条数据，默认10条
+                        total:data.total,//数据总条数,后台返回
+                        callbackFun:function(page){
+                            //点击分页按钮回调函数，返回当前页码
+                            ajaxPage(page);
+                        }
+                    });
+                },
+                error:function(e){
+                    console.log(e);
+                }
+            });
+        }
     </script>
 </body>
 </html>
