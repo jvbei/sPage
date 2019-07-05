@@ -8,7 +8,7 @@ jquery分页插件
 `<script src="./jquery.min.js"></script>`
 
 3，引入sPage插件  
-```<script src="./jquery.sPage.min.js"></script>```
+`<script src="./jquery.sPage.min.js"></script>`
 
 4，使用示例  
 `<div id="myPage"></div>`

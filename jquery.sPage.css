@@ -1,4 +1,4 @@
-.spage-total{display: inline-block;padding: 0px 20px 0 0;line-height: 35px;color: #666;font-size:14px;}
+.spage-total{display: inline-block;margin-right: 20px;line-height: 35px;color: #666;font-size:14px;}
 .spage-number{display: inline-block;color: #666;font-size:14px;}
 .spage-number span{position: relative;box-sizing: border-box;display: inline-block;margin-left:-1px;padding: 0px 14px;line-height: 33px;border:1px solid #ddd;text-align: center;transition: all .2s;cursor: pointer;}
 .spage-number span.active{background: #2d98e6;color: #fff;border-color:#2d98e6;border-color:#2d98e6;z-index: 3;}
