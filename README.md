@@ -12,7 +12,6 @@ jquery分页插件
 4，使用示例
 <pre><code>
 <div id="myPage"></div>
-
 <script type="text/javascript">
     $(function(){
         $("#myPage").sPage({
