@@ -8,16 +8,18 @@
     'use strict';
     var pluginName = "sPage",
         defaults = {
-            page:1,
-            pageSize:10,
-            total:0,
-            showTotal:false,
-            totalTxt:"共{total}条",
-            showSkip:false,
-            showPN:true,
-            prevPage:"上一页",
-            nextPage:"下一页",
-            callbackFun:function(page){}
+            page:1,//当前页
+            pageSize:10,//每页显示多少条
+            total:0,//数据总条数
+            showTotal:false,//是否显示总条数
+            totalTxt:"共{total}条",//数据总条数文字描述
+            showSkip:false,//是否显示跳页
+            showPN:true,//是否显示上下翻页
+            prevPage:"上一页",//上翻页按钮文字
+            nextPage:"下一页",//下翻页按钮文字
+            backFun:function(page){
+                //点击分页按钮回调函数，返回当前页码
+            }
         };
     function Plugin ( element,options ) {
         this.element = $(element);
@@ -123,12 +125,13 @@
                     default:
                         settings.page = pageText;
                 }
+                // 点击或跳转当前页码不执行任何操作
                 if(pageText == that.pageNum){
                     return;
                 }
                 that.pageNum = settings.page;
                 that.viewHtml();
-                settings.callbackFun(pageText);
+                settings.backFun(pageText);
             });
             this.element.on('keyup',"input",function(event){
                 if(event.keyCode == 13){
@@ -137,7 +140,7 @@
                         settings.page = p;
                         that.pageNum = p;
                         that.viewHtml();
-                        settings.callbackFun(p);
+                        settings.backFun(p);
                     }else{
                         return;
                     }

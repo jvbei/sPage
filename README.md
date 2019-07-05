@@ -25,7 +25,7 @@ jquery分页插件
             showPN:true,//是否显示上下翻页，默认开启：true
             prevPage:"上一页",//上翻页文字描述，默认“上一页”
             nextPage:"下一页",//下翻页文字描述，默认“下一页”
-            callbackFun:function(page){
+            backFun:function(page){
             	 //点击分页按钮回调函数，返回当前页码
                 $("#pageNum").text(page);
             }

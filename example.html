@@ -24,7 +24,7 @@
     <div id="myPage1" class="demo"></div>
     <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
     <!-- <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script> -->
-    <script src="./jquery.sPage.min.js"></script>
+    <script src="./jquery.sPage.js"></script>
     <script type="text/javascript">
         $(function(){
             // 示例1
@@ -38,7 +38,7 @@
 	            showPN:true,//是否显示上下翻页，默认开启：true
 	            prevPage:"上一页",//上翻页文字描述，默认“上一页”
 	            nextPage:"下一页",//下翻页文字描述，默认“下一页”
-                callbackFun:function(page){
+                backFun:function(page){
                 	//点击分页按钮回调函数，返回当前页码
                     $("#pNum").text(page);
                 }
@@ -48,7 +48,7 @@
                 page:1,//当前页码
                 pageSize:10,//每页显示多少条数据，默认10条
                 total:150,//数据总条数
-                callbackFun:function(page){
+                backFun:function(page){
                     //点击分页按钮回调函数，返回当前页码
                     $("#pNum1").text(page);
                 }
@@ -78,7 +78,7 @@
                         page:p,//当前页码
                         pageSize:10,//每页显示多少条数据，默认10条
                         total:data.total,//数据总条数,后台返回
-                        callbackFun:function(page){
+                        backFun:function(page){
                             //点击分页按钮回调函数，返回当前页码
                             ajaxPage(page);
                         }
