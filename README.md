@@ -10,7 +10,7 @@ jquery分页插件
 3，引入sPage插件  
 ```<script src="./jquery.sPage.min.js"></script>```
 
-4，使用示例 
+4，使用示例  
 `<div id="myPage"></div>`
 <pre>
 <code>
