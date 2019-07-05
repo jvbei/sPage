@@ -12,7 +12,7 @@ jquery分页插件
 
 4，使用示例 
 `<div id="myPage"></div>`
-
+<pre>
 <code>
 <script type="text/javascript">
     $(function(){
@@ -33,5 +33,5 @@ jquery分页插件
     });
 </script>
 </code>
-
+</pre>
 
