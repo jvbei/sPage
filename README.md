@@ -3,13 +3,13 @@ jquery分页插件
 
 1，引入样式文件，可以根据实际需要修改插件样式
 <link rel="stylesheet" type="text/css" href="./jquery.sPage.css">
-
+<br/>
 2，引入jQuery.js文件
 <script src="./jquery.min.js"></script>
-
+<br/>
 3，引入sPage插件
 <script src="./jquery.sPage.min.js"></script>
-
+<br/>
 4，使用示例
 <pre>
 <code>
