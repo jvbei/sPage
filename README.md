@@ -11,10 +11,8 @@ jquery分页插件
 ```<script src="./jquery.sPage.min.js"></script>```
 
 4，使用示例 
-```
-<div id="myPage"></div>
-```
-<pre>
+`<div id="myPage"></div>`
+
 <code>
 <script type="text/javascript">
     $(function(){
@@ -35,5 +33,5 @@ jquery分页插件
     });
 </script>
 </code>
-</pre>
+
 
