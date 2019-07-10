@@ -19,7 +19,8 @@ jquery分页插件
         $("#myPage").sPage({
             page:1,//当前页码
             pageSize:10,//每页显示多少条数据，默认10条
-            listTotal:150,//数据总条数
+            total:150,//数据总条数
+            totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符
             showTotal:false,//是否显示总条数，默认关闭：false
             showSkip:false,//是否显示跳页，默认关闭：false
             showPN:true,//是否显示上下翻页，默认开启：true
