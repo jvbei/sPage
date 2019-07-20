@@ -1,11 +1,11 @@
 .spage-total{display: inline-block;margin-right: 20px;line-height: 35px;color: #F56C6C;font-size:14px;}
 .spage-number{display: inline-block;color: #F56C6C;font-size:14px;}
-.spage-number span{position: relative;box-sizing: border-box;display: inline-block;margin-left:5px;padding: 0px 14px;line-height: 33px;border:1px solid #F56C6C;text-align: center;transition: all .2s;cursor: pointer;}
+.spage-number span{position: relative;box-sizing: border-box;display: inline-block;margin-left:8px;padding: 0px 14px;line-height: 33px;border:1px solid #F56C6C;text-align: center;transition: all .2s;cursor: pointer;}
 .spage-number span:first-child{margin-left:0px;}
 .spage-number span.active{background: #F56C6C;color: #fff;border-color:#F56C6C;z-index: 3;}
 .spage-number span.active:hover{background: #F56C6C;color: #fff;border-color:#F56C6C;border-color:#F56C6C;z-index: 3;}
 .spage-number span:hover{background-color: #fde2e2;}
-.spage-number span.span-disabled{cursor: not-allowed;color: #ccc;}
+.spage-number span.span-disabled{cursor: not-allowed;color: #ccc;border-color: #ddd;}
 .spage-skip{display: inline-block;margin-left: 20px;line-height: 35px;color: #F56C6C;font-size:14px;}
 .spage-skip input{box-sizing: border-box;display: inline-block;width: 45px;height: 35px;line-height: 35px;color: #F56C6C;text-align: center;vertical-align: top;border:1px solid #F56C6C;outline: none;transition: all .2s;}
 .spage-skip input:focus{border-color: #F56C6C;}
