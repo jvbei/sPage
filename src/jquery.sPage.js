@@ -1,8 +1,8 @@
 /*  
 *  jQuery分页插件sPage
 *  by 凌晨四点半
-*  20190719
-*  v1.1.0
+*  20190728
+*  v1.2.0
 *  https://github.com/jvbei/sPage
 */
 ; (function ($, window, document, undefined) {
@@ -13,6 +13,7 @@
         total: 0,//数据总条数
         showTotal: false,//是否显示总条数
         totalTxt: "共{total}条",//数据总条数文字描述
+        noData: false,//没有数据时是否显示分页，默认false不显示，true显示第一页
         showSkip: false,//是否显示跳页
         showPN: true,//是否显示上下翻页
         prevPage: "上一页",//上翻页按钮文字
@@ -24,16 +25,15 @@
     function Plugin(element, options) {
         this.element = $(element);
         this.settings = $.extend({}, defaults, options);
-        this.pageNum = 1,
-        this.pageList = [],
+        this.pageNum = 1, //记录当前页码
+        this.pageList = [], //页码集合
+        this.pageTatol = 0; //记录总页数
         this.init();
     }
     $.extend(Plugin.prototype, {
         init: function () {
-            if (this.settings.total > 0) {
-                this.viewHtml();
-                this.clickBtn();
-            }
+            this.element.empty();
+            this.viewHtml();
         },
         creatHtml: function (i) {
             if (i == this.settings.page) {
@@ -44,10 +44,21 @@
         },
         viewHtml: function () {
             var settings = this.settings;
-            var pageTatol = Math.ceil(settings.total / settings.pageSize);
+            var pageTatol = 0;
+            if(settings.total > 0){
+                pageTatol = Math.ceil(settings.total / settings.pageSize);
+            }else{
+                if(settings.noData){
+                    pageTatol = 1;
+                    settings.page = 1
+                    settings.total = 0;
+                }else{
+                    return;
+                }
+            }
+            this.pageTatol = pageTatol;
             var pageArr = [];//分页元素集合，减少dom重绘次数
             this.pageNum = settings.page;
-            this.element.empty();
 
             if (settings.showTotal) {
                 pageArr.push('<div class="spage-total">' + settings.totalTxt.replace(/\{(\w+)\}/gi, settings.total) + '</div>');
@@ -92,12 +103,13 @@
             if (settings.showSkip) {
                 this.element.children(".spage-skip").children("input").val(settings.page);
             }
+            this.clickBtn();
         },
         clickBtn: function () {
             var that = this;
             var settings = this.settings;
             var ele = this.element;
-            var pageTatol = Math.ceil(settings.total / settings.pageSize);
+            var pageTatol = this.pageTatol;
             this.element.off('click', "span");
             this.element.on('click', "span", function () {
                 var pageText = $(this).data("page");
