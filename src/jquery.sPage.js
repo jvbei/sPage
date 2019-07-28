@@ -45,14 +45,14 @@
         viewHtml: function () {
             var settings = this.settings;
             var pageTatol = 0;
-            if(settings.total > 0){
+            if (settings.total > 0) {
                 pageTatol = Math.ceil(settings.total / settings.pageSize);
-            }else{
-                if(settings.noData){
+            } else {
+                if (settings.noData) {
                     pageTatol = 1;
                     settings.page = 1
                     settings.total = 0;
-                }else{
+                } else {
                     return;
                 }
             }
