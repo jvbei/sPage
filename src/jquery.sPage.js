@@ -1,7 +1,7 @@
 /*  
 *  jQuery分页插件sPage
 *  by 凌晨四点半
-*  20190728
+*  20190729
 *  v1.2.0
 *  https://github.com/jvbei/sPage
 */
@@ -36,11 +36,7 @@
             this.viewHtml();
         },
         creatHtml: function (i) {
-            if (i == this.settings.page) {
-                this.pageList.push('<span class="active" data-page=' + i + '>' + i + '</span>');
-            } else {
-                this.pageList.push('<span data-page=' + i + '>' + i + '</span>');
-            }
+            i == this.settings.page ? this.pageList.push('<span class="active" data-page=' + i + '>' + i + '</span>') : this.pageList.push('<span data-page=' + i + '>' + i + '</span>');
         },
         viewHtml: function () {
             var settings = this.settings;
@@ -50,7 +46,7 @@
             } else {
                 if (settings.noData) {
                     pageTatol = 1;
-                    settings.page = 1
+                    settings.page = 1;
                     settings.total = 0;
                 } else {
                     return;
@@ -59,7 +55,6 @@
             this.pageTatol = pageTatol;
             var pageArr = [];//分页元素集合，减少dom重绘次数
             this.pageNum = settings.page;
-
             if (settings.showTotal) {
                 pageArr.push('<div class="spage-total">' + settings.totalTxt.replace(/\{(\w+)\}/gi, settings.total) + '</div>');
             }
@@ -97,12 +92,9 @@
             pageArr.push(this.pageList.join(''));
             pageArr.push('</div>');
             if (settings.showSkip) {
-                pageArr.push('<div class="spage-skip">跳至&nbsp;<input type="text" />&nbsp;页&nbsp;&nbsp;<span data-page="go">确定</span></div>');
+                pageArr.push('<div class="spage-skip">跳至&nbsp;<input type="text" value="' + settings.page + '"/>&nbsp;页&nbsp;&nbsp;<span data-page="go">确定</span></div>');
             }
             this.element.html(pageArr.join(''));
-            if (settings.showSkip) {
-                this.element.children(".spage-skip").children("input").val(settings.page);
-            }
             this.clickBtn();
         },
         clickBtn: function () {
@@ -110,8 +102,8 @@
             var settings = this.settings;
             var ele = this.element;
             var pageTatol = this.pageTatol;
-            this.element.off('click', "span");
-            this.element.on('click', "span", function () {
+            this.element.off("click", "span");
+            this.element.on("click", "span", function () {
                 var pageText = $(this).data("page");
                 switch (pageText) {
                     case "prev":
@@ -124,9 +116,8 @@
                         break;
                     case "none":
                         return;
-                    // break;
                     case "go":
-                        var p = parseInt(ele.children(".spage-skip").children("input").val());
+                        var p = parseInt(ele.find("input").val());
                         if (/^[0-9]*$/.test(p) && p >= 1 && p <= pageTatol) {
                             settings.page = p;
                             pageText = p;
@@ -145,10 +136,10 @@
                 that.viewHtml();
                 settings.backFun(pageText);
             });
-            this.element.on('keyup', "input", function (event) {
+            this.element.on("keyup", "input", function (event) {
                 if (event.keyCode == 13) {
-                    var p = parseInt(ele.children(".spage-skip").children("input").val());
-                    if (/^[0-9]*$/.test(p) && p >= 1 && p <= pageTatol) {
+                    var p = parseInt(ele.find("input").val());
+                    if (/^[0-9]*$/.test(p) && p >= 1 && p <= pageTatol && p != that.pageNum) {
                         settings.page = p;
                         that.pageNum = p;
                         that.viewHtml();
@@ -160,9 +151,7 @@
             });
         }
     });
-
     $.fn.sPage = function (options) {
         return new Plugin(this, options);
     }
-
 })(jQuery, window, document);
