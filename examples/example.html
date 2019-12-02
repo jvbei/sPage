@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>sPage分页插件Dome</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="../src/jquery.sPage.css">
-    <!-- <link rel="stylesheet" type="text/css" href="../src/jquery.sPage.red.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../src/jquery.sPage.css"> -->
+    <link rel="stylesheet" type="text/css" href="../src/jquery.sPage.red.css">
     <!-- <link rel="stylesheet" type="text/css" href="../src/jquery.sPage.green.css"> -->
     <style type="text/css">
     	.num{
@@ -44,7 +44,8 @@
 	            showSkip:true,//是否显示跳页，默认关闭：false
 	            showPN:true,//是否显示上下翻页，默认开启：true
 	            prevPage:"上一页",//上翻页文字描述，默认“上一页”
-	            nextPage:"下一页",//下翻页文字描述，默认“下一页”
+                nextPage:"下一页",//下翻页文字描述，默认“下一页”
+                fastForward: 5,//快进快退，默认0页
                 backFun:function(page){
                 	//点击分页按钮回调函数，返回当前页码
                     $("#pNum").text(page);
