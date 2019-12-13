@@ -19,9 +19,7 @@
         prevPage: "上一页",//上翻页按钮文字
         nextPage: "下一页",//下翻页按钮文字
         fastForward: 0,//快进快退，默认0页
-        backFun: function (page) {
-            //点击分页按钮回调函数，返回当前页码
-        }
+        backFun: function (page) {}//点击分页按钮回调函数，返回当前页码
     };
     function Plugin(element, options) {
         this.element = $(element);
@@ -37,11 +35,13 @@
             this.viewHtml();
         },
         creatHtml: function (i) {
-            i == this.settings.page ? this.pageList.push('<button class="active" data-page=' + i + '>' + i + '</button>') : this.pageList.push('<button data-page=' + i + '>' + i + '</button>');
+            i == this.settings.page ? this.pageList.push('<button class="active" data-page=' + i + '>' + i + '</button>')
+            : this.pageList.push('<button data-page=' + i + '>' + i + '</button>');
         },
         viewHtml: function () {
             var settings = this.settings;
             var pageTatol = 0;
+            var pageArr = [];//分页元素集合，减少dom重绘次数
             if (settings.total > 0) {
                 pageTatol = Math.ceil(settings.total / settings.pageSize);
             } else {
@@ -54,7 +54,6 @@
                 }
             }
             this.pageTatol = pageTatol;
-            var pageArr = [];//分页元素集合，减少dom重绘次数
             this.pageNum = settings.page;
             if (settings.showTotal) {
                 pageArr.push('<div class="spage-total">' + settings.totalTxt.replace(/\{(\w+)\}/gi, settings.total) + '</div>');
@@ -173,6 +172,8 @@
         }
     });
     $.fn.sPage = function (options) {
-        return new Plugin(this, options);
+        return this.each(function(){
+            new Plugin(this, options);
+        });
     }
 })(jQuery, window, document);

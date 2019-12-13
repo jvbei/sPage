@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>sPage分页插件Dome</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-    <!-- <link rel="stylesheet" type="text/css" href="../src/jquery.sPage.css"> -->
-    <link rel="stylesheet" type="text/css" href="../src/jquery.sPage.red.css">
+    <link rel="stylesheet" type="text/css" href="../src/jquery.sPage.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../src/jquery.sPage.red.css"> -->
     <!-- <link rel="stylesheet" type="text/css" href="../src/jquery.sPage.green.css"> -->
     <style type="text/css">
     	.num{
@@ -31,6 +31,7 @@
     
     <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
     <script src="../src/jquery.sPage.js"></script>
+    <!-- <script src="../jquery.sPage.min.js"></script> -->
     <script type="text/javascript">
         $(function(){
             // 示例1
@@ -80,7 +81,7 @@
             var p = page || 1;
             $.ajax({
                 type: "POST",
-                url: "www.test.com/test",
+                url: "https://www.test.com/test",
                 data: {
                     page:p,
                     pageSize:10,
@@ -93,7 +94,7 @@
                     // ...
 
                     // 调用分页插件
-                    $("#myPage1").sPage({
+                    $("#myPage").sPage({
                         page:p,//当前页码
                         pageSize:10,//每页显示多少条数据，默认10条
                         total:data.total,//数据总条数,后台返回

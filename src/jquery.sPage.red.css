@@ -8,7 +8,7 @@
 .spage-number button.button-disabled{cursor: not-allowed;color: #ccc;border-color: #ddd;}
 .spage-number .spage-after,.spage-before{padding:0px;width: 38px}
 .spage-skip{display: inline-block;margin-left: 20px;line-height: 35px;color: #F56C6C;font-size:14px;}
-.spage-skip input{box-sizing: border-box;display: inline-block;width: 45px;height: 35px;line-height: 35px;color: #F56C6C;text-align: center;vertical-align: top;border:1px solid #F56C6C;outline: none;transition: all .2s;}
+.spage-skip input{box-sizing: border-box;display: inline-block;width: 45px;height: 35px;color: #F56C6C;text-align: center;vertical-align: top;border:1px solid #F56C6C;background: none;outline: none;transition: all .2s;}
 .spage-skip input:focus{border-color: #F56C6C;}
 .spage-skip button{display: inline-block;padding: 0px 14px;line-height: 33px;vertical-align: top;color: #F56C6C;outline: none;border:1px solid #F56C6C;cursor: pointer;transition: all .2s;outline: none;background: none;user-select: none;}
 .spage-skip button:hover{background: #F56C6C;color: #fff;border:1px solid #F56C6C;}

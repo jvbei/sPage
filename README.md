@@ -10,30 +10,57 @@ jquery分页插件
 3，引入sPage插件  
 `<script src="./jquery.sPage.min.js"></script>`
 
-4，使用示例  
-`<div id="myPage"></div>`
-<pre>
-<code>
+4，使用示例即参数说明
+
+参数  | 默认值  | 备注
+ ---- | ---- | ----
+ page  | 必填 | 当前页码 
+ total  | 必填 | 数据总条数
+ pageSize  | 10 | 每页显示多少条数据
+ totalTxt  | 共{total}条 | 数据总条数文字描述，{total}为占位符，默认"共{total}条
+ noData  | false | 没有数据时是否显示分页，默认false不显示，true显示第一页
+ showTotal  | false | 显示总条数
+ showSkip  | false | 显示跳页
+ showPN  | true | 显示上下翻页按钮
+ prevPage  | 上一页 | 上翻页文字描述
+ nextPage  | 下一页 | 下翻页文字描述
+ fastForward  | 0 | 快进快退
+ backFun  | 无 | 点击分页按钮回调函数，返回当前页码
+```
 <script type="text/javascript">
-    $(function(){
-        $("#myPage").sPage({
-            page:1,//当前页码，必填
-            total:150,//数据总条数，必填
-            pageSize:10,//每页显示多少条数据，默认10条
-            totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-            noData: false,//没有数据时是否显示分页，默认false不显示，true显示第一页
-            showTotal:false,//是否显示总条数，默认关闭：false
-            showSkip:false,//是否显示跳页，默认关闭：false
-            showPN:true,//是否显示上下翻页，默认开启：true
-            prevPage:"上一页",//上翻页文字描述，默认“上一页”
-            nextPage:"下一页",//下翻页文字描述，默认“下一页”
-            backFun:function(page){
-            	//点击分页按钮回调函数，返回当前页码
-                console.log(page);
+    // ajax调用实例
+    function ajaxPage(page){
+        var p = page || 1;
+        $.ajax({
+            type: "POST",
+            url: "https://www.test.com/test",
+            data: {
+                page:p,
+                pageSize:10,
+                name:"小明",
+                age:16
+            },
+            dataType: "json",  
+            success: function(data){
+                //数据处理
+                // ...
+
+                // 调用分页插件
+                $("#myPage").sPage({
+                    page:p,//当前页码
+                    pageSize:10,//每页显示多少条数据，默认10条
+                    total:data.total,//数据总条数,后台返回
+                    backFun:function(page){
+                        //点击分页按钮回调函数，返回当前页码
+                        ajaxPage(page);
+                    }
+                });
+            },
+            error:function(e){
+                console.log(e);
             }
         });
-    });
+    }
 </script>
-</code>
-</pre>
+```
 
