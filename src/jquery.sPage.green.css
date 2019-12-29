@@ -6,7 +6,7 @@
 .spage-number button.active:hover{background: #009688;color: #fff;border-color:#009688;border-color:#009688;z-index: 3;}
 .spage-number button:hover{background-color: #d8edd2;}
 .spage-number button.button-disabled{cursor: not-allowed;color: #ccc;}
-.spage-number .spage-after,.spage-before{padding:0px;width: 38px}
+.spage-number .spage-after,.spage-before{padding:0px;width: 40px}
 .spage-skip{display: inline-block;margin-left: 20px;line-height: 35px;color: #009688;font-size:14px;}
 .spage-skip input{box-sizing: border-box;display: inline-block;width: 45px;height: 35px;color: #fff;background: #009688;text-align: center;vertical-align: top;border:none;outline: none;border-radius: 7px;transition: all .2s;}
 .spage-skip input:focus{background: none;border:1px solid #009688;color: #009688}

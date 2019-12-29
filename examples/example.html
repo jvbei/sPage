@@ -46,7 +46,7 @@
 	            showPN:true,//是否显示上下翻页，默认开启：true
 	            prevPage:"上一页",//上翻页文字描述，默认“上一页”
                 nextPage:"下一页",//下翻页文字描述，默认“下一页”
-                fastForward: 5,//快进快退，默认0页
+                fastForward: 5,//快进快退页数，默认0表示不开启快进快退
                 backFun:function(page){
                 	//点击分页按钮回调函数，返回当前页码
                     $("#pNum").text(page);
@@ -84,9 +84,7 @@
                 url: "https://www.test.com/test",
                 data: {
                     page:p,
-                    pageSize:10,
-                    name:"小明",
-                    age:16
+                    pageSize:10
                 },
                 dataType: "json",  
                 success: function(data){

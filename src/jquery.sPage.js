@@ -1,8 +1,8 @@
 /*  
 *  jQuery分页插件sPage
 *  by 凌晨四点半
-*  20191202
-*  v1.2.1
+*  20191229
+*  version:1.2.2
 *  https://github.com/jvbei/sPage
 */
 ; (function ($, window, document, undefined) {
@@ -144,6 +144,7 @@
                 that.viewHtml();
                 settings.backFun(pageText);
             });
+            this.element.off("keyup", "input");
             this.element.on("keyup", "input", function (event) {
                 if (event.keyCode == 13) {
                     var p = parseInt(ele.find("input").val());

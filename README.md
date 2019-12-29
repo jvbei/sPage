@@ -10,10 +10,10 @@ jquery分页插件
 3，引入sPage插件  
 `<script src="./jquery.sPage.min.js"></script>`
 
-4，使用示例即参数说明
+4，参数说明和使用示例
 
-参数  | 默认值  | 备注
- ---- | ---- | ----
+ 参数  | 默认值  | 备注
+ ----- | ----- | -----
  page  | 必填 | 当前页码 
  total  | 必填 | 数据总条数
  pageSize  | 10 | 每页显示多少条数据
@@ -24,43 +24,41 @@ jquery分页插件
  showPN  | true | 显示上下翻页按钮
  prevPage  | 上一页 | 上翻页文字描述
  nextPage  | 下一页 | 下翻页文字描述
- fastForward  | 0 | 快进快退
+ fastForward  | 0 | 快进快退页数，0表示不开启快进快退
  backFun  | 无 | 点击分页按钮回调函数，返回当前页码
 ```
-<script type="text/javascript">
-    // ajax调用实例
-    function ajaxPage(page){
-        var p = page || 1;
-        $.ajax({
-            type: "POST",
-            url: "https://www.test.com/test",
-            data: {
-                page:p,
-                pageSize:10,
-                name:"小明",
-                age:16
-            },
-            dataType: "json",  
-            success: function(data){
-                //数据处理
-                // ...
+// ajax调用实例
+function ajaxPage(page){
+    var p = page || 1;
+    $.ajax({
+        type: "POST",
+        url: "https://www.test.com/test",
+        data: {
+            page:p,
+            pageSize:10,
+            name:"小明",
+            age:16
+        },
+        dataType: "json",  
+        success: function(data){
+            //数据处理
+            // ...
 
-                // 调用分页插件
-                $("#myPage").sPage({
-                    page:p,//当前页码
-                    pageSize:10,//每页显示多少条数据，默认10条
-                    total:data.total,//数据总条数,后台返回
-                    backFun:function(page){
-                        //点击分页按钮回调函数，返回当前页码
-                        ajaxPage(page);
-                    }
-                });
-            },
-            error:function(e){
-                console.log(e);
-            }
-        });
-    }
-</script>
+            // 调用分页插件
+            $("#myPage").sPage({
+                page:p,//当前页码
+                pageSize:10,//每页显示多少条数据，默认10条
+                total:data.total,//数据总条数,后台返回
+                backFun:function(page){
+                    //点击分页按钮回调函数，返回当前页码
+                    ajaxPage(page);
+                }
+            });
+        },
+        error:function(e){
+            console.log(e);
+        }
+    });
+}
 ```
 
